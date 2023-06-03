@@ -7,6 +7,12 @@ import {
   BadgeDelta,
 } from "@tremor/react";
 import { Waveform } from "@uiball/loaders";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: 'Dashboard | IT ACADEMY',
+  description: "This Dashboard is from WWW IT ACADEMY",
+};
 
 const DashComponent = () => {
   return (

@@ -33,7 +33,7 @@ const Sidebar = () => {
           asideShow ? "space-x-2" : "justify-center"
         }`}
       >
-        {/* we can change this logo after our own logo will be ready! */}
+        {/* we can change this svg logo after our own logo will be ready! */}
         <svg
           className="logo-abbr"
           width="40"
@@ -64,7 +64,7 @@ const Sidebar = () => {
             }
           />
           <SidebarRow
-            href="/dashboard"
+            href="/profile"
             title={asideShow ? "Profile" : ""}
             asideShow={asideShow}
             Icon={
@@ -84,7 +84,7 @@ const Sidebar = () => {
       <div className="absolute bottom-1 h-12 w-12 sm:bottom-5">
         <button
           title="Bu"
-          className="flex w-full items-center justify-center rounded bg-slate-300 p-2 md:p-3"
+          className="flex w-full items-center justify-center rounded bg-slate-100 p-2 md:p-3"
           onClick={() => setAsideShow((prev) => !prev)}
         >
           <ArrowLeftIcon className="h-6 w-6" />
