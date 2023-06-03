@@ -1,51 +1,49 @@
-import { Card, Title, AreaChart, Text, Button } from "@tremor/react";
+import {
+  Card,
+  Text,
+  Metric,
+  Flex,
+  ProgressBar,
+  BadgeDelta,
+} from "@tremor/react";
+import { Waveform } from "@uiball/loaders";
 
-const chartdata = [
-  {
-    date: "Jan 22",
-    SemiAnalysis: 2890,
-    "The Pragmatic Engineer": 2338,
-  },
-  {
-    date: "Feb 22",
-    SemiAnalysis: 2756,
-    "The Pragmatic Engineer": 2103,
-  },
-  {
-    date: "Mar 22",
-    SemiAnalysis: 3322,
-    "The Pragmatic Engineer": 2194,
-  },
-  {
-    date: "Apr 22",
-    SemiAnalysis: 3470,
-    "The Pragmatic Engineer": 2108,
-  },
-  {
-    date: "May 22",
-    SemiAnalysis: 3475,
-    "The Pragmatic Engineer": 1812,
-  },
-  {
-    date: "Jun 22",
-    SemiAnalysis: 3129,
-    "The Pragmatic Engineer": 1726,
-  },
-];
-
-const ChartComponent = () => (
-  <Card decoration="top" decorationColor="blue">
-    <Title>Welcome to our dashboard page bro</Title>
-    <Button>Hello</Button>
-  </Card>
-);
+const DashComponent = () => {
+  return (
+    <div className="flex flex-col space-y-4 md:flex-row md:space-x-4">
+      <Card className="max-w-sm">
+        <Flex justifyContent="between" alignItems="center">
+          <Text>Teachers</Text>
+          <BadgeDelta
+            deltaType="moderateIncrease"
+            isIncreasePositive={true}
+            size="xs"
+          >
+            +12.3%
+          </BadgeDelta>
+        </Flex>
+        <Metric>$ 23,456</Metric>
+      </Card>
+      <Card className="max-w-sm">
+        <Text>Students</Text>
+        <Metric>$ 71,465</Metric>
+        <Flex className="mt-4">
+          <Text>32% of annual target</Text>
+          <Text>$ 225,000</Text>
+        </Flex>
+        <ProgressBar percentageValue={32} className="mt-2" />
+      </Card>
+    </div>
+  );
+};
 
 const DashboardPage = () => {
   return (
-    <div className="h-screen my-4">
-      <ChartComponent />
+    <div className="my-4 flex h-screen flex-col">
+      <DashComponent />
+      <Waveform size={40} lineWeight={3.5} speed={1} color="black" />
     </div>
-  )
-}
+  );
+};
 
-export default DashboardPage
+export default DashboardPage;

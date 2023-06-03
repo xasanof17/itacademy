@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .asideLink {
+    @apply flex items-center rounded-xl px-3 py-2 transition-all duration-200 hover:bg-gray-100;
+  }
+}

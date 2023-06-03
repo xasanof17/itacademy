@@ -5,18 +5,21 @@ type Props = {
   Icon: ReactElement<SVGSVGElement>;
   title: string;
   href: string;
+  asideShow: boolean;
 };
 
-const SidebarRow = ({ Icon, title, href }: Props) => {
+const SidebarRow = ({ Icon, title, href, asideShow }: Props) => {
   return (
     <Link
       href={href}
-      className="group flex items-center space-x-2 rounded-xl px-3 py-2 transition-all duration-200 hover:bg-gray-100"
+      className={`asideLink group ${asideShow && "justif-center space-x-2"}`}
     >
       {Icon}
-      <p className="text-lg font-medium text-black group-hover:text-blue-500">
-        {title}
-      </p>
+      {asideShow && (
+        <p className="text-lg font-medium text-black group-hover:text-blue-500">
+          {title}
+        </p>
+      )}
     </Link>
   );
 };

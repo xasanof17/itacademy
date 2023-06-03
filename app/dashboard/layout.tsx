@@ -1,5 +1,12 @@
 import { Navbar, Sidebar } from "@/components";
 import { Metadata } from "next";
+import { Inter } from "next/font/google";
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Dashboard",
@@ -17,7 +24,7 @@ export default function DashboardLayout({
       <Sidebar />
       <section className="flex flex-grow flex-col">
         <Navbar />
-        <div>{children}</div>
+        <div className="px-2">{children}</div>
       </section>
     </main>
   );
