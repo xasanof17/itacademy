@@ -2,8 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  html,
+  body {
+    @apply scroll-smooth bg-white;
+  }
+}
+
 @layer components {
   .asideLink {
-    @apply flex items-center rounded-xl px-3 py-2 transition-all duration-200 hover:bg-gray-100;
+    @apply flex items-center rounded-xl bg-gray-100 p-1 shadow transition-all duration-200 hover:shadow-none sm:px-3 sm:py-2;
+  }
+  .sidebarRow {
+    @apply h-6 w-6 group-hover:text-blue-500 group-active:text-blue-500;
   }
 }

@@ -1,17 +1,13 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import {
   ArrowLeftIcon,
-  ComputerDesktopIcon,
+  ArrowRightIcon,
+  DesktopComputerIcon,
   HomeIcon,
-  CalendarDaysIcon,
-  BellIcon,
-  PresentationChartLineIcon,
-  BanknotesIcon,
   UserIcon,
-  ScaleIcon,
-} from "@heroicons/react/24/outline";
+} from "@heroicons/react/outline";
 import SidebarRow from "./SidebarRow";
 
 const Sidebar = () => {
@@ -21,6 +17,12 @@ const Sidebar = () => {
 
   // this state helps to minimize our aside when bottom button click
   const [asideShow, setAsideShow] = useState<boolean>(true);
+
+  useEffect(() => {
+    if (isMobile) {
+      setAsideShow(false);
+    }
+  }, [isMobile]);
 
   return (
     <aside
@@ -53,41 +55,38 @@ const Sidebar = () => {
         </h3>
       </div>
       <div className="mt-5 overflow-hidden">
-        <ul className="flex flex-col">
+        <ul className="flex flex-col space-y-2">
           {/* SidebarRow components help to show the links */}
           <SidebarRow
             href="/dashboard"
             title={asideShow ? "Dashboard" : ""}
             asideShow={asideShow}
-            Icon={
-              <HomeIcon className="h-6 w-6 group-hover:text-blue-500 group-active:text-blue-500" />
-            }
+            Icon={<HomeIcon className="sidebarRow" />}
           />
           <SidebarRow
-            href="/profile"
+            href="/dashboard/profile"
             title={asideShow ? "Profile" : ""}
             asideShow={asideShow}
-            Icon={
-              <UserIcon className="h-6 w-6 group-hover:text-blue-500 group-active:text-blue-500" />
-            }
+            Icon={<UserIcon className="sidebarRow" />}
           />
           <SidebarRow
             href="/dashboard"
             title={asideShow ? "Dashboard" : ""}
             asideShow={asideShow}
-            Icon={
-              <ComputerDesktopIcon className="h-6 w-6 group-hover:text-blue-500 group-active:text-blue-500" />
-            }
+            Icon={<DesktopComputerIcon className="sidebarRow" />}
           />
         </ul>
       </div>
-      <div className="absolute bottom-1 h-12 w-12 sm:bottom-5">
+      <div className="absolute bottom-1 h-12 w-auto sm:bottom-5 sm:w-12">
         <button
-          title="Bu"
           className="flex w-full items-center justify-center rounded bg-slate-100 p-2 md:p-3"
           onClick={() => setAsideShow((prev) => !prev)}
         >
-          <ArrowLeftIcon className="h-6 w-6" />
+          {asideShow ? (
+            <ArrowLeftIcon className="h-5 w-5 sm:h-6 sm:w-6" />
+          ) : (
+            <ArrowRightIcon className="h-5 w-5 sm:h-6 sm:w-6" />
+          )}
         </button>
       </div>
     </aside>

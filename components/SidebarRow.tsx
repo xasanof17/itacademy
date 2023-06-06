@@ -12,11 +12,13 @@ const SidebarRow = ({ Icon, title, href, asideShow }: Props) => {
   return (
     <Link
       href={href}
-      className={`asideLink group ${asideShow && "justif-center space-x-2"}`}
+      className={`asideLink group ${
+        asideShow ? "justif-center space-x-2" : "justify-center"
+      }`}
     >
       {Icon}
       {asideShow && (
-        <p className="text-lg font-medium text-black group-hover:text-blue-500">
+        <p className="text-base font-medium text-black group-hover:text-blue-500 sm:text-lg">
           {title}
         </p>
       )}

@@ -3,19 +3,31 @@ import Link from "next/link";
 
 type Props = {
   icon: ReactElement<SVGSVGElement> | ReactElement<JSX.Element>;
-  href: string;
+  href?: string;
+  onClick?: () => void;
 };
 
-const LinkItem = ({ icon, href }: Props) => {
+const LinkItem = ({ icon, href, onClick }: Props) => {
   return (
-    <li>
-      <Link
-        href={href}
-        className="items-cener flex justify-center rounded-full bg-gray-100 p-2"
-      >
-        {icon}
-      </Link>
-    </li>
+    <>
+      {href ? (
+        <li>
+          <Link
+            href={href}
+            className="flex items-center justify-center rounded-full bg-gray-100 p-2"
+          >
+            {icon}
+          </Link>
+        </li>
+      ) : (
+        <button
+          onClick={onClick}
+          className="flex items-center justify-center rounded-full bg-gray-100 p-2"
+        >
+          {icon}
+        </button>
+      )}
+    </>
   );
 };
 
